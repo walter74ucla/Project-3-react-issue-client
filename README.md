@@ -1,6 +1,6 @@
 # Project-3-react-issue-client
 
-![wireframe](images/P3_Wireframe.png)
+![wireframe](Images/P3_Wireframe.png)
 
 ## React Client for Project 3 - Issue Tracking 
 
