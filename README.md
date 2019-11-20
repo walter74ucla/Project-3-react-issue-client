@@ -1,8 +1,8 @@
-# Project-3-flask-issue-api
+# Project-3-react-issue-client
 
-![wireframe](/images/P3_Wireframe.png)
+![wireframe](images/P3_Wireframe.png)
 
-## Flask API for Project 3 - Issue Tracking 
+## React Client for Project 3 - Issue Tracking 
 
 ### User Experience
 
@@ -28,3 +28,4 @@
      -	Add attachments to the “Create Issues” submission
      -	Add Reply
      -	Add edit capability to the Comments
+
