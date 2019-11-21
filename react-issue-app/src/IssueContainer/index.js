@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import IssueList from '../IssueList';
 import CreateIssue from '../CreateIssueForm';
+import EditIssueModal from '../EditIssueModal';
 import { Grid } from 'semantic-ui-react';
 
 class IssueContainer extends Component {
@@ -8,7 +9,13 @@ class IssueContainer extends Component {
 		super(props);
 
 		this.state = {
-			issues: []
+			issues: [],
+			issueToEdit: {
+				subject: '',
+				created_at: '',
+				id: ''
+			},
+			showEditModal: false
 		}
 	}
 
@@ -77,12 +84,68 @@ class IssueContainer extends Component {
 
 	}
 
+	openEditModal = (issueFromTheList) => {
+		console.log(issueFromTheList, ' issueToEdit ');
+
+		this.setState({
+			showEditModal: true,
+			issueToEdit: {
+				...issueFromTheList
+			}
+		})
+	}
+
+	handleEditChange = (e) => {
+    	this.setState({
+      		issueToEdit: {
+        		...this.state.issueToEdit,
+        [e.currentTarget.name]: e.currentTarget.value
+      		}
+    	})
+  	}
+
+  	closeAndEdit = async (e) => {
+    	e.preventDefault();
+
+    	try {
+
+      		const editResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/issues/' + this.state.issueToEdit.id, {
+        		method : "PUT",
+        		credentials: 'include',
+        		body: JSON.stringify(this.state.issueToEdit),
+        		headers: {
+          			'Content-Type' : 'application/json'
+        		}
+      		});
+
+      const editResponseParsed = await editResponse.json();
+      console.log('editResponseParsed: ', editResponseParsed);
+
+      const newIssueArrayWithEdit = this.state.issues.map((issue)=> {
+        if(issue.id === editResponseParsed.data.id) {
+            issue = editResponseParsed.data
+        }
+        return issue;
+        })
+      
+      this.setState({
+        issues: newIssueArrayWithEdit,
+        showEditModal: false
+      })
+
+    } catch(err) {
+      console.log(err);
+    }
+
+  }
 
 	render(){
 		return(
 			<React.Fragment>
-				<IssueList issues={this.state.issues} deleteIssue={this.deleteIssue}/>
+				<IssueList issues={this.state.issues} deleteIssue={this.deleteIssue} openEditModal={this.openEditModal}/>
 				<CreateIssue addIssue={this.addIssue} />
+
+          <EditIssueModal handleEditChange={this.handleEditChange} open={this.state.showEditModal} issueToEdit={this.state.issueToEdit} closeAndEdit={this.closeAndEdit}/>
 			</React.Fragment>
 			)
 	}

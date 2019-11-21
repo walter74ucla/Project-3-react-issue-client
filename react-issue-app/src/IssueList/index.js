@@ -13,7 +13,7 @@ function IssueList(props){
 				</Card.Content>
 				<Card.Content extra>
             		<Button onClick={() => props.deleteIssue(issue.id)}>Delete Issue</Button>
-            		<Button>Edit Issue</Button>
+            		<Button onClick={() => props.openEditModal(issue)}>Edit Issue</Button>
           		</Card.Content>
           	</Card>
 
