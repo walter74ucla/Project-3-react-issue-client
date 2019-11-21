@@ -61,11 +61,27 @@ class IssueContainer extends Component {
 		}
 	}
 
+	deleteIssue = async (id) => {
+
+		console.log(id)
+		const deleteIssueResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/issues/' + id, {
+													method: 'DELETE'
+												});
+		const deleteIssueParsed = await deleteIssueResponse.json();
+		console.log(deleteIssueResponse)
+		// now that the db has deleted our item, we need to remove it from state
+		this.setState({issues: this.state.issues.filter((issue) => issue.id !== id )})
+
+		console.log(deleteIssueParsed, ' response from Flask server')
+			// then make the delete request, then remove the dog from the state array using filter
+
+	}
+
 
 	render(){
 		return(
 			<React.Fragment>
-				<IssueList issues={this.state.issues} />
+				<IssueList issues={this.state.issues} deleteIssue={this.deleteIssue}/>
 				<CreateIssue addIssue={this.addIssue} />
 			</React.Fragment>
 			)
