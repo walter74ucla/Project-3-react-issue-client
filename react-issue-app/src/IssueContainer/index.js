@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import IssueList from '../IssueList';
+import CreateIssue from '../CreateIssueForm';
+import { Grid } from 'semantic-ui-react';
 
 class IssueContainer extends Component {
 	constructor(props){
@@ -27,11 +29,45 @@ class IssueContainer extends Component {
 		console.log(err);
 		}
 	}
+// Add Issue method
+	addIssue = async (e, issue) => {
+		e.preventDefault();
+		console.log(issue);
+
+		try {
+
+			// Send JSON
+			// createdIssue variable storing response from Flask API
+			const createdIssueResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/issues/', {
+				method: 'POST',
+				body: JSON.stringify(issue),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			});
+			
+			// turn the response from Flask into an object we can use
+			const parsedResponse = await createdIssueResponse.json();
+			console.log(parsedResponse, ' this is response');
+
+			// empty all issues in state to new array then
+			// adding issue we created to the end of it
+
+			this.setState({issues: [...this.state.issues, parsedResponse.data]})
+		
+		} catch(err){
+			console.log('error')
+			console.log(err)
+		}
+	}
+
 
 	render(){
 		return(
-			/*"I'm the issues container"*/
-			<IssueList issues={this.state.issues} />
+			<React.Fragment>
+				<IssueList issues={this.state.issues} />
+				<CreateIssue addIssue={this.addIssue} />
+			</React.Fragment>
 			)
 	}
 
