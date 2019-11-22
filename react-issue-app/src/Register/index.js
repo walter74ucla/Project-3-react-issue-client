@@ -41,7 +41,7 @@ class Register extends Component {
 
     	const parsedResponse = await registerResponse.json();
   
-	    if (parsedResponse.status.code === 201) {
+	    if (parsedResponse.status.code === 200) {
 	      console.log('Sign up successful');
 	      this.props.history.push('/issues'); // Change url to /issues programmatically with react-router
 	    } else {
