@@ -27,7 +27,7 @@ class Register extends Component {
 	// Submission of register in form
 	handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log('hello');
+		console.log('hello', this.state);
 		const registrationUrl = `${process.env.REACT_APP_API_URL}/api/v1/users/register`; // localhost:8000/api/v1/users/register
     	// this is users.  this matches flask app.py: app.register_blueprint(user, url_prefix='/api/v1/users')
     	const registerResponse = await fetch(registrationUrl, {
@@ -37,11 +37,12 @@ class Register extends Component {
     		headers: {
     			'Content-Type': 'application/json'
     		}
+    		
     	});
 
     	const parsedResponse = await registerResponse.json();
   
-	    if (parsedResponse.status.code === 200) {
+	    if (parsedResponse.status.code === 201) {
 	      console.log('Sign up successful');
 	      this.props.history.push('/issues'); // Change url to /issues programmatically with react-router
 	    } else {
@@ -61,25 +62,32 @@ class Register extends Component {
       </Header>
       <Form size='large' onSubmit={this.handleSubmit}>
         <Segment stacked>
-          <Form.Input 
+          <Form.Input
+          	name = 'name'
+          	type='text'
           	icon='signup'
           	iconPosition='left'
-          	placeholder='First name' 
+          	placeholder='Name' 
           	onChange={this.handleChange} 
           	required/>
           <Form.Input 
+          	name = 'department'
+          	type='text'
             iconPosition='left'
             icon='users'
             placeholder='Department'
             onChange={this.handleChange} 
             required />
           <Form.Input 
+          	name = 'email'
+          	type='email'
           	fluid icon='user' 
           	iconPosition='left' 
           	placeholder='E-mail address' 
           	onChange={this.handleChange} 
           	required/>
           <Form.Input
+          	name = 'password'
             fluid icon='lock'
             iconPosition='left'
             placeholder='Password'
