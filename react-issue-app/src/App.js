@@ -1,15 +1,32 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import IssueContainer from './IssueContainer'
+import Register from './Register';
+import Login from './Login';
+import IssueContainer from './IssueContainer';
+import HeaderComponent from './HeaderComponent';
+import { Route, Switch } from 'react-router-dom';
+
+
+const My404 = () => {
+	return (
+		<div>
+			<h3>You are lost.</h3>
+		</div>
+	)
+};
 
 function App() {
   return (
-    <div className="App">
-      <IssueContainer />
-      
-     
-    </div>
+    <main>
+    	<HeaderComponent />
+	    	<Switch>
+	    		<Route exact path="/" component={ Register } />
+	    		<Route exact path="/login" component={ Login } />
+	    		<Route exact path="/issues" component={ IssueContainer } />
+	    		<Route component={ My404 } />
+	 		</Switch>     
+     </main>
   );
 }
 
