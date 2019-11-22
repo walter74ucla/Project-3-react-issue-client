@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Form, Label, Button, Message } from 'semantic-ui-react';
+import { Form, Label, Button, Message, Grid, Header, Icon, Segment, List} from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+
 
 class Register extends Component {
 	constructor() {
@@ -52,7 +54,57 @@ class Register extends Component {
 
 	render() {
 		return (
-			<Form onSubmit={this.handleSubmit}>
+			<Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+    <Grid.Column style={{ maxWidth: 450 }}>
+      <Header as='h2' color='teal' textAlign='center'>
+        <Icon name='baseball ball' /> Register for Issues
+      </Header>
+      <Form size='large' onSubmit={this.handleSubmit}>
+        <Segment stacked>
+          <Form.Input 
+          	icon='signup'
+          	iconPosition='left'
+          	placeholder='First name' 
+          	onChange={this.handleChange} 
+          	required/>
+          <Form.Input 
+            iconPosition='left'
+            icon='users'
+            placeholder='Department'
+            onChange={this.handleChange} 
+            required />
+          <Form.Input 
+          	fluid icon='user' 
+          	iconPosition='left' 
+          	placeholder='E-mail address' 
+          	onChange={this.handleChange} 
+          	required/>
+          <Form.Input
+            fluid icon='lock'
+            iconPosition='left'
+            placeholder='Password'
+            type='password'
+            onChange={this.handleChange} 
+            required/>
+
+          <Button color='teal' fluid size='large' type='submit'>
+           Register
+          </Button>
+        </Segment>
+         { this.state.errorMsg ? <Message negative>{this.state.errorMsg}</Message> : null }
+      </Form>
+      {/*<Message>
+        New to us? <a href='#'>Sign Up</a>
+      </Message>*/}
+    </Grid.Column>
+  </Grid>
+		)
+	}
+}
+
+export default Register;
+
+			{/*<Form onSubmit={this.handleSubmit}>
 				<h4>Register New User</h4>
 		        <Label>Name</Label>
 		        <Form.Input type="text" name="name" onChange={this.handleChange} required />
@@ -64,9 +116,4 @@ class Register extends Component {
 		        <Form.Input type="password" name="password" onChange={this.handleChange} required />
 		        <Button type="submit" color="green">Register</Button>
 		        { this.state.errorMsg ? <Message negative>{this.state.errorMsg}</Message> : null }
-		    </Form>
-		)
-	}
-}
-
-export default Register;
+		    </Form>*/}

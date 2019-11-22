@@ -23,7 +23,7 @@ class Login extends Component {
 	handleSubmit = async (e) => {
 		e.preventDefault();
 		console.log('Email & Password:', this.state);
-		const loginUrl = `${process.env.REACT_APP_API_URL}/api/v1/user/login`; //localhost:8000/api/v1/user/login
+		const loginUrl = `${process.env.REACT_APP_API_URL}/api/v1/users/login`; //localhost:8000/api/v1/user/login
 		const loginResponse = await fetch(loginUrl, {
 			method: 'POST',
 			body: JSON.stringify(this.state),
