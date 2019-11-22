@@ -25,9 +25,14 @@ class IssueContainer extends Component {
 	getIssues = async () => {
 
 		try {
-			const issues = await fetch(process.env.REACT_APP_API_URL + '/api/v1/issues/');
+			const issues = await fetch(process.env.REACT_APP_API_URL + '/api/v1/issues/',
+				{ // added this callback to send over the session cookie
+					credentials: 'include',
+					method: "GET"
+				});
 			const parsedIssues = await issues.json();
 			console.log(parsedIssues);
+
 			this.setState({
 				issues: parsedIssues.data
 			})
@@ -145,7 +150,7 @@ class IssueContainer extends Component {
 				<IssueList issues={this.state.issues} deleteIssue={this.deleteIssue} openEditModal={this.openEditModal}/>
 				<CreateIssue addIssue={this.addIssue} />
 
-          <EditIssueModal handleEditChange={this.handleEditChange} open={this.state.showEditModal} issueToEdit={this.state.issueToEdit} closeAndEdit={this.closeAndEdit}/>
+          		<EditIssueModal handleEditChange={this.handleEditChange} open={this.state.showEditModal} issueToEdit={this.state.issueToEdit} closeAndEdit={this.closeAndEdit}/>
 			</React.Fragment>
 			)
 	}
