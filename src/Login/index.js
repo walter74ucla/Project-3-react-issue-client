@@ -55,7 +55,7 @@ class Login extends Component {
 			<Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
 			    <Grid.Column style={{ maxWidth: 450 }}>
 			      <Header as='h2' color='teal' textAlign='center'>
-			        <Icon name='baseball ball' /> Log-in to your account
+			        <Icon name='conversation' /> Log-in to your account
 			      </Header>
 			      <Form size="large" onSubmit={this.handleSubmit}>
 			        <Segment stacked>

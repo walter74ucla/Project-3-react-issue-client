@@ -1,23 +1,28 @@
 import React from 'react';
-import { Card, Button } from 'semantic-ui-react';
+import { Card, Button, Checkbox, Grid } from 'semantic-ui-react';
 
 function IssueList(props){
 
 	const issues = props.issues.map((issue) => {
+		
+
 		return (
-			<Card key={issue.id}>
+			
+			<Card fluid key={issue.id}>
 				<Card.Content>
-					<Card.Header>Name, Department/ Date Created / Resolved Checkbox</Card.Header>
+					<Card.Header>Name, Department/ Date Created</Card.Header>
 					{/*<Card.Description>Subject Description</Card.Description>*/}
 					<Card.Description>{issue.subject}</Card.Description>
+					<Checkbox label="Resolved"/>
 				</Card.Content>
 				<Card.Content extra>
             		<Button onClick={() => props.deleteIssue(issue.id)}>Delete Issue</Button>
             		<Button onClick={() => props.openEditModal(issue)}>Edit Issue</Button>
           		</Card.Content>
           	</Card>
-
+         
 			)
+		
 	})
 	return (
 		<Card.Group>
