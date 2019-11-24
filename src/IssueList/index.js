@@ -7,20 +7,19 @@ function IssueList(props){
 		
 
 		return (
-			
-					<Card centered fluid key={issue.id} style={{ maxWidth: 800 }}>
-						<Card.Content>
-							<Card.Header>Name, Department/ Date Created</Card.Header>
-							{/*<Card.Description>Subject Description</Card.Description>*/}
-							<Card.Description>{issue.subject}</Card.Description>
-							<Checkbox label="Resolved"/>
-						</Card.Content>
-						<Card.Content extra>
-		            		<Button onClick={() => props.deleteIssue(issue.id)}>Delete Issue</Button>
-		            		<Button onClick={() => props.openEditModal(issue)}>Edit Issue</Button>
-		          		</Card.Content>
-		          	</Card>
-		      
+
+			<Card fluid key={issue.id}>
+				<Card.Content>
+					<Card.Header>Name, Department/ Date Created / Resolved Checkbox</Card.Header>
+					{/*<Card.Description>Subject Description</Card.Description>*/}
+					<Card.Description>{issue.subject}</Card.Description>
+				</Card.Content>
+				<Card.Content extra>
+            		<Button onClick={() => props.deleteIssue(issue.id)}>Delete Issue</Button>
+            		<Button onClick={() => props.openEditModal(issue)}>Edit Issue</Button>
+          		</Card.Content>
+          	</Card>
+
 
          
 			)

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import IssueList from '../IssueList';
-import CreateIssue from '../CreateIssueForm';
+import CreateIssue from '../CreateIssueForm';// not sure if we can separate this onto another page???
 import EditIssueModal from '../EditIssueModal';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Segment } from 'semantic-ui-react';
 
 class IssueContainer extends Component {
 	constructor(props){
@@ -146,16 +146,130 @@ class IssueContainer extends Component {
 
 	render(){
 		return(
-			
-			<React.Fragment>
-				<IssueList issues={this.state.issues} deleteIssue={this.deleteIssue} openEditModal={this.openEditModal}/>
-				<CreateIssue addIssue={this.addIssue} />
 
-          		<EditIssueModal handleEditChange={this.handleEditChange} open={this.state.showEditModal} issueToEdit={this.state.issueToEdit} closeAndEdit={this.closeAndEdit}/>
-			</React.Fragment>
+			<Grid divided='vertically' centered stackable>
+			    <Grid.Row columns={3}>
+			      <Grid.Column width={3}>placeholder</Grid.Column>
+			      <Grid.Column width={10}>
+			        <CreateIssue addIssue={this.addIssue} />
+			      </Grid.Column>
+			      <Grid.Column width={3}>placeholder</Grid.Column>
+			    </Grid.Row>
+
+
+			    <Grid.Row columns={3}>
+			      <Grid.Column width={3}>placeholder</Grid.Column>
+			      <Grid.Column width={10}>
+			        <IssueList issues={this.state.issues} deleteIssue={this.deleteIssue} openEditModal={this.openEditModal}/>
+			      </Grid.Column>
+			      <Grid.Column width={3}>placeholder</Grid.Column>
+			      <EditIssueModal handleEditChange={this.handleEditChange} open={this.state.showEditModal} issueToEdit={this.state.issueToEdit} closeAndEdit={this.closeAndEdit}/>
+			    </Grid.Row>
+			</Grid>
 			)
 	}
 
 }
 
 export default IssueContainer
+
+
+
+			{/*<React.Fragment>
+				<IssueList issues={this.state.issues} deleteIssue={this.deleteIssue} openEditModal={this.openEditModal}/>
+				<CreateIssue addIssue={this.addIssue} />
+
+          		<EditIssueModal handleEditChange={this.handleEditChange} open={this.state.showEditModal} issueToEdit={this.state.issueToEdit} closeAndEdit={this.closeAndEdit}/>
+			</React.Fragment>*/}
+
+
+			{/* this gave me new issue on top without a visible divider
+			<Grid verticalAlign='top' centered divided='vertically'>
+		        <Grid.Column width={4}>four wide column</Grid.Column>
+		        <Grid.Column width={8}>eight wide column
+		        	<CreateIssue addIssue={this.addIssue} />
+		        	<IssueList issues={this.state.issues} deleteIssue={this.deleteIssue} openEditModal={this.openEditModal}/>
+		        </Grid.Column>
+		        <Grid.Column width={4}>four wide column</Grid.Column>
+      		</Grid>*/}
+
+
+      		{/* this gave me a divider between new issue and issue list, but it took up the entire screen width
+      		<Grid divided='vertically'>
+			    <Grid.Row columns={1}>
+			      <Grid.Column>
+			        <CreateIssue addIssue={this.addIssue} />
+			      </Grid.Column>
+			    </Grid.Row>
+
+			    <Grid.Row columns={1}>
+			      <Grid.Column>
+			        <IssueList issues={this.state.issues} deleteIssue={this.deleteIssue} openEditModal={this.openEditModal}/>
+			      </Grid.Column>
+			    </Grid.Row>
+			</Grid>*/}
+
+
+			{/* this almost gives me what I want.  the three wide columns do not stretch
+			<Grid celled='internally'>
+				    <Grid.Row>
+				      <Grid.Column width={3}>
+				        three wide column
+				      </Grid.Column>
+				      <Grid.Column width={10}>
+				        <CreateIssue addIssue={this.addIssue} />
+				      </Grid.Column>
+				      <Grid.Column width={3}>
+				        three wide column
+				      </Grid.Column>
+				    </Grid.Row>
+
+				    <Grid.Row>
+				      <Grid.Column width={3}>
+				        three wide column
+				      </Grid.Column>
+				      <Grid.Column width={10}>
+				        <IssueList issues={this.state.issues} deleteIssue={this.deleteIssue} openEditModal={this.openEditModal}/>
+				      </Grid.Column>
+				      <Grid.Column width={3}>
+				        three wide column
+				      </Grid.Column>
+				    </Grid.Row>
+				</Grid>*/}
+
+
+			{/* columns 1 and 3 are stretched, but there is no line between new issue and issue list
+				<Grid columns={3} divided>
+				    <Grid.Row stretched>
+				      <Grid.Column width={3}>
+				        <Segment>1</Segment>
+				      </Grid.Column>
+				      <Grid.Column width={10}>
+				        <CreateIssue addIssue={this.addIssue} />
+				        <IssueList issues={this.state.issues} deleteIssue={this.deleteIssue} openEditModal={this.openEditModal}/>
+				      </Grid.Column>
+				      <Grid.Column width={3}>
+				        <Segment>1</Segment>
+				      </Grid.Column>
+				    </Grid.Row>
+				</Grid>*/}
+
+
+			{/* still not quite what I want
+				<Grid divided='vertically' centered stackable>
+				    <Grid.Row columns={3}>
+				      <Grid.Column width={3}>placeholder</Grid.Column>
+				      <Grid.Column width={10}>
+				        <CreateIssue addIssue={this.addIssue} />
+				      </Grid.Column>
+				      <Grid.Column width={3}>placeholder</Grid.Column>
+				    </Grid.Row>
+
+				    <Grid.Row columns={3}>
+				      <Grid.Column width={3}>placeholder</Grid.Column>
+				      <Grid.Column width={10}>
+				        <IssueList issues={this.state.issues} deleteIssue={this.deleteIssue} openEditModal={this.openEditModal}/>
+				      </Grid.Column>
+				      <Grid.Column width={3}>placeholder</Grid.Column>
+				    </Grid.Row>
+				</Grid>*/}
