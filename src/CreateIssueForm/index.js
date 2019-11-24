@@ -15,8 +15,10 @@ class CreateIssue extends Component {
 	}
 
 	handleSubmit = (e) =>{
+		this.props.addIssue(e, this.state);
 		this.setState({subject:''})
 	}
+
 	render (){
 		return (
 			<Grid textAlign='center' verticalAlign='middle'>
@@ -24,7 +26,7 @@ class CreateIssue extends Component {
 			      <Header as='h2' color='teal' textAlign='center'>
 			        <Icon name='conversation' /> Create New Issue
 			      </Header>
-			      <Form size="large" onSubmit={(e) => this.props.addIssue(e, this.state)}>
+			      <Form size="large" onSubmit={this.handleSubmit}>
 			        <Segment stacked>
 			          <Form.TextArea 
 			          	fluid 
