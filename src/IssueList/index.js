@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, Checkbox, Grid } from 'semantic-ui-react';
+import { Card, Button, Checkbox, Grid, Responsive } from 'semantic-ui-react';
 
 function IssueList(props){
 
@@ -8,18 +8,20 @@ function IssueList(props){
 
 		return (
 			
-			<Card fluid key={issue.id}>
-				<Card.Content>
-					<Card.Header>Name, Department/ Date Created</Card.Header>
-					{/*<Card.Description>Subject Description</Card.Description>*/}
-					<Card.Description>{issue.subject}</Card.Description>
-					<Checkbox label="Resolved"/>
-				</Card.Content>
-				<Card.Content extra>
-            		<Button onClick={() => props.deleteIssue(issue.id)}>Delete Issue</Button>
-            		<Button onClick={() => props.openEditModal(issue)}>Edit Issue</Button>
-          		</Card.Content>
-          	</Card>
+					<Card centered fluid key={issue.id} style={{ maxWidth: 800 }}>
+						<Card.Content>
+							<Card.Header>Name, Department/ Date Created</Card.Header>
+							{/*<Card.Description>Subject Description</Card.Description>*/}
+							<Card.Description>{issue.subject}</Card.Description>
+							<Checkbox label="Resolved"/>
+						</Card.Content>
+						<Card.Content extra>
+		            		<Button onClick={() => props.deleteIssue(issue.id)}>Delete Issue</Button>
+		            		<Button onClick={() => props.openEditModal(issue)}>Edit Issue</Button>
+		          		</Card.Content>
+		          	</Card>
+		      
+
          
 			)
 		

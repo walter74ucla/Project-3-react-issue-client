@@ -58,7 +58,7 @@ class Register extends Component {
 			<Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
     <Grid.Column style={{ maxWidth: 450 }}>
       <Header as='h2' color='teal' textAlign='center'>
-        <Icon name='baseball ball' /> Register for Issues
+        <Icon name='conversation' /> Register for Issues
       </Header>
       <Form size='large' onSubmit={this.handleSubmit}>
         <Segment stacked>

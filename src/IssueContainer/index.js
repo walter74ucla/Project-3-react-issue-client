@@ -146,6 +146,7 @@ class IssueContainer extends Component {
 
 	render(){
 		return(
+			
 			<React.Fragment>
 				<IssueList issues={this.state.issues} deleteIssue={this.deleteIssue} openEditModal={this.openEditModal}/>
 				<CreateIssue addIssue={this.addIssue} />
