@@ -109,6 +109,8 @@ class IssueContainer extends Component {
     	})
   	}
 
+  	
+
   	closeAndEdit = async (e) => {
     	e.preventDefault();
 
