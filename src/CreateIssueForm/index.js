@@ -13,12 +13,16 @@ class CreateIssue extends Component {
 	handleChange = (e) => {
 		this.setState({[e.currentTarget.name]: e.currentTarget.value})
 	}
+
+	handleSubmit = (e) =>{
+		this.setState({subject:''})
+	}
 	render (){
 		return (
 			<Grid textAlign='center' verticalAlign='middle'>
 			    <Grid.Column>
 			      <Header as='h2' color='teal' textAlign='center'>
-			        <Icon name='baseball ball' /> Create New Issue
+			        <Icon name='conversation' /> Create New Issue
 			      </Header>
 			      <Form size="large" onSubmit={(e) => this.props.addIssue(e, this.state)}>
 			        <Segment stacked>
@@ -31,6 +35,7 @@ class CreateIssue extends Component {
 			          	name="subject"
 			          	value={this.state.subject} 
 			          	onChange={this.handleChange}
+
 			          />
 
 			          <Button color="teal" fluid size="large" type="submit">
