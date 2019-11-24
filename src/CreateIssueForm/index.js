@@ -13,14 +13,22 @@ class CreateIssue extends Component {
 	handleChange = (e) => {
 		this.setState({[e.currentTarget.name]: e.currentTarget.value})
 	}
+	
+	handleSubmit = (e) => {//this is not working
+		e.preventDefault();
+		this.setState({ subject: '' })
+	}
+
 	render (){
+		const { subject } = this.state
+
 		return (
 			<Grid textAlign='center' verticalAlign='middle'>
 			    <Grid.Column>
 			      <Header as='h2' color='teal' textAlign='center'>
 			        <Icon name='baseball ball' /> Create New Issue
 			      </Header>
-			      <Form size="large" onSubmit={(e) => this.props.addIssue(e, this.state)}>
+			      <Form size="large" onSubmit={(e) => this.props.addIssue(e, this.state), this.handleSubmit}>{/*Trying to figure out how to handle multiple functions onSubmit*/}
 			        <Segment stacked>
 			          <Form.TextArea 
 			          	fluid 

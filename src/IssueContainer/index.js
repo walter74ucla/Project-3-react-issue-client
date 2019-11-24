@@ -65,7 +65,7 @@ class IssueContainer extends Component {
 			// empty all issues in state to new array then
 			// adding issue we created to the end of it
 
-			this.setState({issues: [...this.state.issues, parsedResponse.data]})
+			this.setState({issues: [parsedResponse.data, ...this.state.issues]})
 		
 		} catch(err){
 			console.log('error')
