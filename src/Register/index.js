@@ -1,7 +1,28 @@
 import React, { Component } from 'react';
-import { Form, Label, Button, Message, Grid, Header, Icon, Segment, List} from 'semantic-ui-react';
+import { Form, Label, Button, Message, Grid, Header, Icon, Segment, List, Dropdown } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
+
+const departmentOptions = [
+  {
+    key: 'IT',
+    text: 'IT',
+    value: 'IT'
+  },
+
+  {
+    key: 'Accounting',
+    text: 'Accounting',
+    value: 'Accounting'
+  },
+  
+  {
+    key: 'HR',
+    text: 'HR',
+    value: 'HR'
+  }  
+]
+  
 
 class Register extends Component {
 	constructor() {
@@ -70,12 +91,15 @@ class Register extends Component {
           	placeholder='Name' 
           	onChange={this.handleChange} 
           	required/>
-          <Form.Input 
+          <Form.Dropdown
           	name = 'department'
           	type='text'
-            iconPosition='left'
-            icon='users'
+            // iconPosition='left'
+            // icon='users'
             placeholder='Department'
+            fluid
+            selection
+            options={departmentOptions}
             onChange={this.handleChange} 
             required />
           <Form.Input 
