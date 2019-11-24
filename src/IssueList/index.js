@@ -5,7 +5,7 @@ function IssueList(props){
 
 	const issues = props.issues.map((issue) => {
 		return (
-			<Card key={issue.id}>
+			<Card fluid key={issue.id}>
 				<Card.Content>
 					<Card.Header>Name, Department/ Date Created / Resolved Checkbox</Card.Header>
 					{/*<Card.Description>Subject Description</Card.Description>*/}
