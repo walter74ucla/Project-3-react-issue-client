@@ -52,6 +52,7 @@ class IssueContainer extends Component {
 			// createdIssue variable storing response from Flask API
 			const createdIssueResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/issues/', {
 				method: 'POST',
+				credentials: 'include', // Send a session cookie along with our request
 				body: JSON.stringify(issue),
 				headers: {
 					'Content-Type': 'application/json'

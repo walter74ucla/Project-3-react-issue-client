@@ -10,7 +10,7 @@ function IssueList(props){
 
 			<Card fluid key={issue.id}>
 				<Card.Content>
-					<Card.Header>Name, Department/ Date Created </Card.Header>
+					<Card.Header>{issue.created_by.name}, {issue.created_by.department} / {issue.created_at} </Card.Header>
 					{/*<Card.Description>Subject Description</Card.Description>*/}
 					<Card.Description>{issue.subject}</Card.Description>
 					<Checkbox label="Resolved"/>
@@ -28,9 +28,9 @@ function IssueList(props){
 					          <div>Today at 5:42PM</div>
 					        </Comment.Metadata>
 					        <Comment.Text>I can comment.</Comment.Text>
-					        <Comment.Actions>
+					        {/*<Comment.Actions>
 					          <Comment.Action>Reply</Comment.Action>
-					        </Comment.Actions>
+					        </Comment.Actions>*/}
 					      </Comment.Content>
 					    </Comment>
 
@@ -50,7 +50,7 @@ function IssueList(props){
 
 						<Form reply>
 					      <Form.Input />
-					      <Button content='Add Reply' labelPosition='left' icon='edit' primary />
+					      <Button content='Add Comment' labelPosition='left' icon='edit' primary />
 					    </Form>
   					</Comment.Group>
 

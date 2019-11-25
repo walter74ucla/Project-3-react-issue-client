@@ -26,8 +26,8 @@ function App() {
     	<HeaderComponent />
 	    	<Switch>
 	    		<Route exact path="/register" component={ Register }/>
-	    		<Route exact path="/" component={ Login } />
-          <Route exact path="/login" component= { Login } />
+	    		{/*<Route exact path="/" component={ Login } />*/}
+          		<Route exact path="/login" component= { Login } />
 	    		<Route exact path="/issues" component={ IssueContainer } />
 	    		{/*<Route exact path="/create_issue" ={ CreateIssue } />I do not think we can do this*/}
 	    		<Route component={ My404 } />
