@@ -11,11 +11,12 @@ function IssueList(props){
 
 			<Card fluid key={issue.id}>
 				<Card.Content>
-					<Card.Header>{issue.created_by.name}/ Date Created </Card.Header>
+
+					<Card.Header>{issue.created_by.name}, {issue.created_by.department} / {issue.created_at} </Card.Header>
 					{/*<Card.Description>Subject Description</Card.Description>*/}
 					<Card.Description>{issue.subject}</Card.Description>
 					<Checkbox label="Resolved"/>
-
+					
 				</Card.Content>
 				<Card.Content extra>
             		<Button onClick={() => props.deleteIssue(issue.id)}>Delete Issue</Button>
