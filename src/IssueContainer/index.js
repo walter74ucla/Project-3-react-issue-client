@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import IssueList from '../IssueList';
 import CreateIssue from '../CreateIssueForm';// not sure if we can separate this onto another page???
+import CommentList from '../CommentList'
 import EditIssueModal from '../EditIssueModal';
 import { Grid, Segment } from 'semantic-ui-react';
 
@@ -15,6 +16,7 @@ class IssueContainer extends Component {
 				created_at: '',
 				id: ''
 			},
+			comments: [],
 			showEditModal: false
 		}
 	}
@@ -54,6 +56,7 @@ class IssueContainer extends Component {
 				method: 'POST',
 				credentials: 'include', // Send a session cookie along with our request
 				body: JSON.stringify(issue),
+				credentials: 'include',
 				headers: {
 					'Content-Type': 'application/json'
 				}
