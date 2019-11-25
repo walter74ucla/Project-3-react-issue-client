@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import IssueList from '../IssueList';
 import CreateIssue from '../CreateIssueForm';// not sure if we can separate this onto another page???
+import CommentList from '../CommentList'
 import EditIssueModal from '../EditIssueModal';
 import { Grid, Segment } from 'semantic-ui-react';
 
@@ -15,6 +16,7 @@ class IssueContainer extends Component {
 				created_at: '',
 				id: ''
 			},
+			comments: [],
 			showEditModal: false
 		}
 	}
@@ -53,6 +55,7 @@ class IssueContainer extends Component {
 			const createdIssueResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/issues/', {
 				method: 'POST',
 				body: JSON.stringify(issue),
+				credentials: 'include',
 				headers: {
 					'Content-Type': 'application/json'
 				}
