@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Label, Button, Message, Grid, Header, Icon, Segment, List, Dropdown } from 'semantic-ui-react';
+import { Form, Label, Button, Message, Grid, Header, Icon, Segment, List, Dropdown, Select } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 
@@ -11,9 +11,9 @@ const departmentOptions = [
   },
 
   {
-    key: 'Accounting',
-    text: 'Accounting',
-    value: 'Accounting'
+    key: 'DATA',
+    text: 'DATA',
+    value: 'DATA'
   },
   
   {
@@ -42,6 +42,7 @@ class Register extends Component {
 	handleChange = (e) => {
 		this.setState({
 			[e.currentTarget.name]: e.currentTarget.value
+
 		})
 	}
 
@@ -91,7 +92,7 @@ class Register extends Component {
           	placeholder='Name' 
           	onChange={this.handleChange} 
           	required/>
-          <Form.Dropdown
+          <Form.Input
           	name = 'department'
           	type='text'
             // iconPosition='left'
@@ -99,7 +100,7 @@ class Register extends Component {
             placeholder='Department'
             fluid
             selection
-            options={departmentOptions}
+            // options={departmentOptions}
             onChange={this.handleChange} 
             required />
           <Form.Input 

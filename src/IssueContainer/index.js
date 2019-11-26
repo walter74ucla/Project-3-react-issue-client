@@ -56,7 +56,6 @@ class IssueContainer extends Component {
 				method: 'POST',
 				credentials: 'include', // Send a session cookie along with our request
 				body: JSON.stringify(issue),
-				credentials: 'include',
 				headers: {
 					'Content-Type': 'application/json'
 				}
@@ -81,28 +80,44 @@ class IssueContainer extends Component {
 
 		console.log(id)
 		const deleteIssueResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/issues/' + id, {
-													method: 'DELETE'
+													method: 'DELETE',
+													credentials: 'include' // Send a session cookie along with our request
 												});
 		const deleteIssueParsed = await deleteIssueResponse.json();
 		console.log(deleteIssueResponse)
-		// now that the db has deleted our item, we need to remove it from state
-		this.setState({issues: this.state.issues.filter((issue) => issue.id !== id )})
+		if (deleteIssueParsed.status.code === 200) {
+			// now that the db has deleted our item, we need to remove it from state
+			this.setState({issues: this.state.issues.filter((issue) => issue.id !== id )})
+
+		} else {
+			alert ("You cannot delete an issue that you did not create")
+		}
 
 		console.log(deleteIssueParsed, ' response from Flask server')
 			// then make the delete request, then remove the dog from the state array using filter
 
 	}
 
-	openEditModal = (issueFromTheList) => {
+	openEditModal = async (issueFromTheList) => {
 		console.log(issueFromTheList, ' issueToEdit ');
 
-		this.setState({
-			showEditModal: true,
-			issueToEdit: {
-				...issueFromTheList
-			}
-		})
+		// if the user that is logged in created the issue then show modal
+		// else alert "You cannot edit an issue that you did not create"
+		
+		
+
+			this.setState({
+				showEditModal: true,
+				issueToEdit: {
+					...issueFromTheList
+				}
+			})
 	}
+      	// } else { 
+      	// 	alert("You cannot edit an issue that you did not create")
+      	// }	
+
+      
 
 	handleEditChange = (e) => {
     	this.setState({
@@ -122,7 +137,7 @@ class IssueContainer extends Component {
 
       		const editResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/issues/' + this.state.issueToEdit.id, {
         		method : "PUT",
-        		credentials: 'include',
+        		credentials: 'include', // Send a session cookie along with our request
         		body: JSON.stringify(this.state.issueToEdit),
         		headers: {
           			'Content-Type' : 'application/json'
