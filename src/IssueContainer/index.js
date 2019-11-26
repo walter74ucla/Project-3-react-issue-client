@@ -170,20 +170,20 @@ class IssueContainer extends Component {
 
 			<Grid divided='vertically' centered stackable>
 			    <Grid.Row columns={3}>
-			      <Grid.Column width={3}>placeholder</Grid.Column>
+			      <Grid.Column width={3}></Grid.Column>
 			      <Grid.Column width={10}>
 			        <CreateIssue addIssue={this.addIssue} />
 			      </Grid.Column>
-			      <Grid.Column width={3}>placeholder</Grid.Column>
+			      <Grid.Column width={3}></Grid.Column>
 			    </Grid.Row>
 
 
 			    <Grid.Row columns={3}>
-			      <Grid.Column width={3}>placeholder</Grid.Column>
+			      <Grid.Column width={3}></Grid.Column>
 			      <Grid.Column width={10}>
 			        <IssueList issues={this.state.issues} deleteIssue={this.deleteIssue} openEditModal={this.openEditModal}/>
 			      </Grid.Column>
-			      <Grid.Column width={3}>placeholder</Grid.Column>
+			      <Grid.Column width={3}></Grid.Column>
 			      <EditIssueModal handleEditChange={this.handleEditChange} open={this.state.showEditModal} issueToEdit={this.state.issueToEdit} closeAndEdit={this.closeAndEdit}/>
 			    </Grid.Row>
 			</Grid>

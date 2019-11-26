@@ -9,7 +9,7 @@ const HeaderComponent = () => {
 			<List>
 				{/*<List.Item><Link to = '/'>Home</Link></List.Item>*/}
 				<List.Item><Link to = '/login'>Home</Link></List.Item>
-				<List.Item><Link to = '/issues'>issue</Link></List.Item>
+				<List.Item><Link to = '/issues'>Issue</Link></List.Item>
 			</List>
 		</Header>
 	)
