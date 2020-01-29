@@ -147,7 +147,7 @@ class IssueContainer extends Component {
 
     	try {
 
-      		const editResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/issues/' + this.state.issueToEdit.id, {
+      		const editResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/issues/' + this.state.issueToEdit.id + '/', {//adding '/' to resolve CORS error
         		method : "PUT",
         		credentials: 'include', // Send a session cookie along with our request
         		body: JSON.stringify(this.state.issueToEdit),
