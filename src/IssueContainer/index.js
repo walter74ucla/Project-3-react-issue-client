@@ -78,7 +78,7 @@ class IssueContainer extends Component {
 	deleteIssue = async (id) => {
 
 		console.log(id)
-		const deleteIssueResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/issues/' + id, {
+		const deleteIssueResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/issues/' + id + '/', {//adding '/' to resolve CORS error
 													method: 'DELETE',
 													credentials: 'include' // Send a session cookie along with our request
 												});
@@ -99,22 +99,35 @@ class IssueContainer extends Component {
 
 	openEditModal = async (issueFromTheList) => {
 		console.log(issueFromTheList, ' issueToEdit ');
-
+		console.log(issueFromTheList.id);
 		// if the user that is logged in created the issue then show modal
 		// else alert "You cannot edit an issue that you did not create"
-		
-		
-
-			this.setState({
+		// want to do the validations on the server, not the client
+		const issue = await fetch(process.env.REACT_APP_API_URL + '/api/v1/issues/' + issueFromTheList.id + '/',
+		// I get this error in the console...
+		// Access to fetch at 'http://localhost:8000/api/v1/issues/2' from origin 'http://localhost:3000' has been blocked by CORS policy: 
+		// No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the
+		// request's mode to 'no-cors' to fetch the resource with CORS disabled.
+		// Adding the '/' to the end of the const issue = await fetch(... solved it.
+				{ // added this callback to send over the session cookie
+					credentials: 'include',
+					method: "GET"
+				});
+		const parsedIssue = await issue.json();
+		console.log(parsedIssue, ' parsedIssue');
+		// console.log(issueFromTheList.created_by.id);
+		// console.log(parsedIssue.data.created_by.id);
+      	if (parsedIssue.status.code === 401) {
+	      	alert ("You cannot edit an issue that you did not create")
+	    } else {
+	      	this.setState({
 				showEditModal: true,
 				issueToEdit: {
 					...issueFromTheList
 				}
 			})
+	    }		
 	}
-      	// } else { 
-      	// 	alert("You cannot edit an issue that you did not create")
-      	// }	
 
       
 
@@ -134,7 +147,7 @@ class IssueContainer extends Component {
 
     	try {
 
-      		const editResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/issues/' + this.state.issueToEdit.id, {
+      		const editResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/issues/' + this.state.issueToEdit.id + '/', {//adding '/' to resolve CORS error
         		method : "PUT",
         		credentials: 'include', // Send a session cookie along with our request
         		body: JSON.stringify(this.state.issueToEdit),

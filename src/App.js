@@ -5,6 +5,7 @@ import Register from './Register';
 import Login from './Login';
 import IssueContainer from './IssueContainer';
 import HeaderComponent from './HeaderComponent';
+import IssueList from './IssueList';
 // import CreateIssue from './CreateIssueForm'; //I do not think we can do this.
 import { Route, Switch } from 'react-router-dom';
 
@@ -25,7 +26,7 @@ function App() {
     }}>
     	<HeaderComponent />
 	    	<Switch>
-          <Route exact path="/" component= { Login }/>
+          		<Route exact path="/" component= { Login }/>
 	    		<Route exact path="/register" component={ Register }/>
 	    		{/*<Route exact path="/" component={ Login } />*/}
           		<Route exact path="/login" component= { Login } />
@@ -33,8 +34,8 @@ function App() {
 	    		{/*<Route exact path="/create_issue" ={ CreateIssue } />I do not think we can do this*/}
 	    		<Route component={ My404 } />
 	 		</Switch> 
-      </div> 
-     </main>
+    </div> 
+    </main>
   );
 }
 
