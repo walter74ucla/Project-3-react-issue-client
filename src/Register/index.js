@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Label, Button, Message, Grid, Header, Icon, Segment, List, Dropdown, Select } from 'semantic-ui-react';
+import { Form, Button, Message, Grid, Header, Icon, Segment, Dropdown, Select } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 
@@ -136,17 +136,3 @@ class Register extends Component {
 }
 
 export default Register;
-
-			{/*<Form onSubmit={this.handleSubmit}>
-				<h4>Register New User</h4>
-		        <Label>Name</Label>
-		        <Form.Input type="text" name="name" onChange={this.handleChange} required />
-		        <Label>Department</Label>
-		        <Form.Input type="text" name="department" onChange={this.handleChange} required />
-		        <Label>Email</Label>
-		        <Form.Input type="email" name="email" onChange={this.handleChange} required />
-		        <Label>Password</Label>
-		        <Form.Input type="password" name="password" onChange={this.handleChange} required />
-		        <Button type="submit" color="green">Register</Button>
-		        { this.state.errorMsg ? <Message negative>{this.state.errorMsg}</Message> : null }
-		    </Form>*/}

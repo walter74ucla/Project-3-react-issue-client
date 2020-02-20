@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button, Label, Segment, Grid, Header, Icon } from 'semantic-ui-react';
+import { Form, Button, Segment, Grid, Header, Icon } from 'semantic-ui-react';
 
 class CreateIssue extends Component {
 	constructor(){
@@ -29,7 +29,7 @@ class CreateIssue extends Component {
 			      <Form size="large" onSubmit={this.handleSubmit}>
 			        <Segment stacked>
 			          <Form.TextArea 
-			          	fluid 
+			          	// fluid...does not apply to text area
 			          	//icon="question circle"...these do not show up in Text Area
 			          	//iconPosition="left"
 			          	placeholder="Enter Issue Here" 
@@ -53,14 +53,3 @@ class CreateIssue extends Component {
 }
 
 export default CreateIssue;
-
-
-			{/*
-			<Segment>
-				<h4>New Issue</h4>
-				<Form onSubmit={(e) => this.props.addIssue(e, this.state)}>
-					<Label>Issue:</Label>
-					<Form.Input type='text' name='subject' value={this.state.subject} onChange={this.handleChange} />
-					<Button type='Submit'>Submit Issue</Button>
-				</Form>
-			</Segment>*/}
