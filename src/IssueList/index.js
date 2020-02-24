@@ -100,7 +100,6 @@ class IssueList extends Component {
 					    </Comment>
 					));
 						
-
 		return (
 
 			<Card fluid key={issue.id}>
@@ -126,19 +125,15 @@ class IssueList extends Component {
 				</Card.Content>				
 				<CreateComment addComment={this.addComment} issueId={issue.id}/>
           	</Card>
-          		)
+        )
 	
-          }
+        });
 
-         
-			
-		
-	)
-	return (
-		<Card.Group>
-			{ issues }
-		</Card.Group>
-	) 
+		return (
+			<Card.Group>
+				{ issues }
+			</Card.Group>
+		) 
 	}
 }
 
