@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Label, Button, Message, Grid, Header, Image, Segment, Icon, List } from 'semantic-ui-react';
+import { Form, Button, Message, Grid, Header, Segment, Icon, List } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 
@@ -24,7 +24,7 @@ class Login extends Component {
 	// Submission of login in form
 	handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log('Email & Password:', this.state);
+		// console.log('Email & Password:', this.state);
 		const loginUrl = `${process.env.REACT_APP_API_URL}/api/v1/users/login`; //localhost:8000/api/v1/users/login
 		// this is users.  this matches flask app.py: app.register_blueprint(user, url_prefix='/api/v1/users')
 		const loginResponse = await fetch(loginUrl, {
@@ -100,15 +100,3 @@ class Login extends Component {
 }
 
 export default Login;
-
-
-
-{/*<Form onSubmit={this.handleSubmit}>
-				<h4>Sign In</h4>
-				<Label>Email</Label>
-				<Form.Input type="email" name="email" onChange={this.handleChange} required/>
-				<Label>Password</Label>
-				<Form.Input type="password" name="password" onChange={this.handleChange} required />
-				<Button type="submit" color="green" >Sign In</Button>
-				{ this.state.errorMsg ? <Message negative>{this.state.errorMsg}</Message> : null }
-			</Form>*/}

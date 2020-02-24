@@ -5,7 +5,6 @@ import Register from './Register';
 import Login from './Login';
 import IssueContainer from './IssueContainer';
 import HeaderComponent from './HeaderComponent';
-import IssueList from './IssueList';
 // import CreateIssue from './CreateIssueForm'; //I do not think we can do this.
 import { Route, Switch } from 'react-router-dom';
 
